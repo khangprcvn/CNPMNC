@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import dataBook from '../assets/data_book';
 class ViewDetail extends Component {
   render() {
-    const index = this.props.searchBook.id;
-    const book = this.props.searchBook.books[index];
+    const index = this.props.id;
     return (
       <div className="container" style={{ marginTop: '20px' }}>
         <div className="row mt-3">
@@ -12,25 +11,25 @@ class ViewDetail extends Component {
               <div className="col-md-3 col-sx-12 text-lg-left text-md-left text-center">
                 <img
                   className="rounded"
-                  src={book.image}
+                  src={dataBook[index].image}
                   height="200px"
                   width="95%"
-                  alt={book.name}
+                  alt={dataBook[index].name}
                 />
               </div>
 
               <div className="col-md-9 col-sx-12">
                 <h1 className="item-title text-capitalize text-lg-left text-md-left text-center">
-                  <span>{book.name}</span>
+                  <span>{dataBook[index].name}</span>
                 </h1>
                 <div className="font-weight-light text-lg-left text-md-left text-center">
-                  {book.author}
+                  {dataBook[index].author}
                 </div>
                 <div className="category text-lg-left text-md-left text-center">
                   <h6>
                     <a className="badge badge-pill badge-primary text-capitalize">
                       <span class="badge badge-pill badge-primary">
-                        {book.category}
+                        {dataBook[index].category}
                       </span>
                     </a>
                   </h6>
@@ -38,7 +37,7 @@ class ViewDetail extends Component {
               </div>
             </div>
             <div className="row p-3 text-justify">
-              <p style={{ margin: '10px' }}>{book.content}</p>
+              <p style={{ margin: '10px' }}>{dataBook[index].content}</p>
             </div>
           </div>
           <div className="border p-3 col-md-4 col-sm-12">
@@ -60,8 +59,5 @@ class ViewDetail extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  searchBook: state.searchBook
-});
 
-export default connect(mapStateToProps)(ViewDetail);
+export default ViewDetail;

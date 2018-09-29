@@ -5,7 +5,6 @@ import { Link, Switch, Route } from 'react-router-dom';
 import viewDetail from '../actions/view_detail';
 import ViewDetail from '../containers/View_detail';
 class ListBook extends Component {
-  
   render() {
     console.log(this.props);
     return (
@@ -76,7 +75,13 @@ class ListBook extends Component {
             </div>
           )}
         />
-        <Route exact path={this.props.link} component={ViewDetail} />
+        <Route
+          exact
+          path={this.props.link}
+          render={() => (
+            <ViewDetail id={this.props.dataBook.id} />
+          )}
+        />
       </Switch>
     );
   }
