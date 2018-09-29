@@ -37,7 +37,7 @@ class ViewDetail extends Component {
               </div>
             </div>
             <div className="row p-3 text-justify">
-              <p style={{ margin: '10px' }}>{dataBook[index].content}</p>
+              <p className="text-justify" style={{marginTop: '30px', marginLeft: '20px'}}>{dataBook[index].content}</p>
             </div>
           </div>
           <div className="border p-3 col-md-4 col-sm-12">
