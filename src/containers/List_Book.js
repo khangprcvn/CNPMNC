@@ -4,6 +4,7 @@ import searchBook from '../actions/search_book';
 import { Link, Switch, Route } from 'react-router-dom';
 import viewDetail from '../actions/view_detail';
 import ViewDetail from '../containers/View_detail';
+import Form from './Form';
 class ListBook extends Component {
   render() {
     console.log(this.props);
@@ -18,7 +19,7 @@ class ListBook extends Component {
               <div className="ui category search form-group">
                 <div className="ui icon input">
                   <input
-                    style={{ width: '1150px' }}
+                    style={{ width: '950px' }}
                     className="prompt"
                     type="search"
                     placeholder="Search book in store"
@@ -28,7 +29,6 @@ class ListBook extends Component {
                   />
                   <i className="search icon" />
                 </div>
-                <div className="results" />
               </div>
               {this.props.dataBook.books.map(book => (
                 <div className="col-md-6" key={book.id}>
@@ -77,11 +77,10 @@ class ListBook extends Component {
         />
         <Route
           exact
-          path={this.props.link}
-          render={() => (
-            <ViewDetail id={this.props.dataBook.id} />
-          )}
+          path="/:gt_1"
+          render={() => <ViewDetail id={this.props.dataBook.id} />}
         />
+        <Route exact path="/:post" component={Form} />
       </Switch>
     );
   }
