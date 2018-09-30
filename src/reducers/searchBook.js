@@ -7,7 +7,7 @@ const initialSearch = {
 };
 
 function searchBookReducer(state = initialSearch, action) {
-  console.log(action);
+  // console.log(action);
   switch (action.type) {
     case 'SEARCH_ACTION':
       let searchValue = action.payload;
@@ -25,13 +25,22 @@ function searchBookReducer(state = initialSearch, action) {
         id: action.payload.index
       }
     case 'ADD_BOOK':
-      return [
+      return {
         ...state,
-        {
-          name: action.name,
-          author: action.author
-        }
-      ]
+        books: [
+          ...state.books,
+          {
+            id: state.books.length,
+            name: action.input.name,
+            category: action.input.category,
+            author: action.input.author,
+            status: action.input.status,
+            content: action.input.content,
+            image: action.input.image,
+            current_owner: action.input.owner
+          }
+        ]
+      };
     default:
       return state;
   }
